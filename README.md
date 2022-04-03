@@ -1,2 +1,2 @@
-# Entrega1Regueira
+# PythonBlog
 WEB Django con patrón MVT
