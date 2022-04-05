@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from AppBlog.models import Post, Profile, User
 
@@ -33,3 +34,15 @@ def addPost(request):
             user.save()
             return render(request, "home.html")
       return render(request, "addPost.html")
+
+def userSearch(request):
+      return render(request, "userSearch.html")
+
+def search(request):
+      if request.GET['username']:
+            username = request.GET['username']
+            users = User.objects.filter(username__icontains=username)
+            return render(request, "userResult.html", {"users": users, "username": username})
+      else:
+            reply = "No data"
+      return HttpResponse(reply)

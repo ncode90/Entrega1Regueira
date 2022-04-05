@@ -1,0 +1,14 @@
+{% extends "header.html" %} {% load static %}
+{% block content %}
+<h2>User Result</h2>
+<p class="lead">Searching: {{username}}</p>
+{% if users %}
+<ul class="list-group">
+{% for user in users  %}
+<li class="list-group-item">User name: {{user.username}}</li>
+<li class="list-group-item">Password: {{user.password}}</li>
+<li class="list-group-item">Email address: {{user.email}}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

@@ -9,4 +9,6 @@ urlpatterns = [
     path('addUser', views.addUser, name="AddUser"),
     path('addProfile', views.addProfile, name="AddProfile"),
     path('addPost', views.addPost, name="AddPost"),
+    path('userSearch', views.userSearch, name="userSearch"),
+    path('search/', views.search),
 ]
