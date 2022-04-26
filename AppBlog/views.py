@@ -1,7 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from AppBlog.models import Post, Profile, User
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def home(request):
       return render(request, "home.html")
 
@@ -46,3 +50,32 @@ def search(request):
       else:
             reply = "No data"
       return HttpResponse(reply)
+
+def login(request):
+      if request.method == 'POST':
+            form = AuthenticationForm(request, data = request.POST)
+            if form.is_valid():
+                  username = form.cleaned_data.get('username')
+                  password = form.cleaned_data.get('password')
+                  user = authenticate(username=username, password=password)
+
+                  if user is not None:
+                        login(request, user)
+                        return render(request, "home.html", {"mensaje":f"Bienvenido {username}"})
+                  else:
+                        return render(request, "home.html", {"mensaje":"Datos incorrectos"})
+            else:
+                  return render(request, "home.html", {"mensaje":"Formulario erroneo"})
+      form = AuthenticationForm()
+      return render(request, "login.html", {"form": form})
+
+def register(request):
+      if request.method == 'POST':
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                  sername = form.cleaned_data.get('username')
+                  form.save()
+                  return render(request, "home.html", {"mensaje":"Usuario creado"})
+      else:
+            form = UserCreationForm()
+      return render(request, "register.html", {"form": form})
