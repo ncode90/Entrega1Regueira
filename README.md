@@ -30,3 +30,5 @@ Entrega Final
 6. Panel de Administración. :white_check_mark:
 - super-usuario: **ncode90**
 - contraseña: **ncode90**
+7. Registro, Login y Logout :white_check_mark:
+8. Acerca de mí :white_check_mark:
