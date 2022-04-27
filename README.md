@@ -1,6 +1,11 @@
 # PythonBlog
-WEB Django con patrón MVT
+Este proyecto fue desarrollado con Python + Django como parte del curso de [CoderHouse](https://www.coderhouse.com/).
 
+## Navegabilidad
+![python gif](https://user-images.githubusercontent.com/85459881/165417683-af73ee8d-4d30-4084-9e08-1eb2cf354d17.gif)
+
+WEB Django con patrón MVT
+-----
 1. Herencia de HTML. :white_check_mark:
 2. Por lo menos 3 clases en models. :white_check_mark:
 - user
